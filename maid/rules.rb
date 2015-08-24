@@ -1,26 +1,6 @@
-  # Sample Maid rules file -- some ideas to get you started.
-#
-# To use, remove ".sample" from the filename, and modify as desired.  Test using:
-#
-#     maid clean -n
-#
-# **NOTE:** It's recommended you just use this as a template; if you run these rules on your machine without knowing
-# what they do, you might run into unwanted results!
-#
-# Don't forget, it's just Ruby!  You can define custom methods and use them below:
-# 
-#     def magic(*)
-#       # ...
-#     end
-# 
-# If you come up with some cool tools of your own, please send me a pull request on GitHub!  Also, please consider sharing your rules with others via [the wiki](https://github.com/benjaminoakes/maid/wiki).
-#
-# For more help on Maid:
-#
-# * Run `maid help`
-# * Read the README, tutorial, and documentation at https://github.com/benjaminoakes/maid#maid
-# * Ask me a question over email (hello@benjaminoakes.com) or Twitter (@benjaminoakes)
-# * Check out how others are using Maid in [the Maid wiki](https://github.com/benjaminoakes/maid/wiki)
+# Maid rules for me
+
+require 'date'
 
 Maid.rules do
 
@@ -44,7 +24,7 @@ Maid.rules do
   # Labels file based on date since now
   def colourFile(path)
     # set_tag(path, [])
-    
+
     days = daysSince(path)
     # puts "#{days} days for #{path}"
 
@@ -57,7 +37,7 @@ Maid.rules do
     elsif days <= 10
       set_tag(path, "Green")
     elsif days <= 20
-      set_tag(path, "Blue")  
+      set_tag(path, "Blue")
     elsif days <= 30
       set_tag(path, "Purple")
     else
@@ -66,11 +46,18 @@ Maid.rules do
   end
 
   def moveOldDownload(path)
-    days = daysSince(path)
+    if path != PREV_DOWNLOADS_DIR
+      days = daysSince(path)
 
-    if days > 30
-      set_tag(path, [])
-      move(path, "#{PREV_DOWNLOADS_DIR}/")
+      if days >= 0
+        # set_tag(path, [])
+        t = accessed_at(path)
+        mon_name = Date::MONTHNAMES[t.month]
+        new_dir = "#{mon_name} #{t.year}"
+        puts new_dir
+        mkdir("#{PREV_DOWNLOADS_DIR}/#{new_dir}/")
+        move(path, "#{PREV_DOWNLOADS_DIR}/#{new_dir}/")
+      end
     end
   end
 
@@ -81,7 +68,7 @@ Maid.rules do
   def cleanDownloads()
     dir("#{DOWNLOADS_DIR}/*").each do |path|
       if path != PREV_DOWNLOADS_DIR
-        colourFile(path)
+        # colourFile(path)
         moveOldDownload(path)
       end
     end
@@ -96,6 +83,13 @@ Maid.rules do
 
   def clearTags(path)
     set_tag(path, [])
+  end
+
+  # Unzip zip files in downloads
+  watch '~/Downloads/' do
+    rule 'Unzip Downloads' do
+      unzipDownloads()
+    end
   end
 
   # Watch downloads folder to label and move old downloads
@@ -114,7 +108,7 @@ Maid.rules do
 
   rule 'Run all' do
     cleanDownloads()
-    updateSystem()
+    # updateSystem()
   end
 
   # Updates packages on system
