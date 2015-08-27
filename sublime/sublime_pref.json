@@ -1,22 +1,26 @@
 {
-    "color_scheme": "Packages/Theme - Afterglow/Afterglow.tmTheme",
-    "ensure_newline_at_eof_on_save": true,
-    "font_face": "Consolas",
-    "font_size": 12,
-    "highlight_line": true,
-    "ignored_packages":
-    [
-        "Vintage",
-        "DocBlockr",
-        "TrailingSpaces",
-        "SublimeLinter"
-    ],
-    "scroll_past_end": true,
-    "soda_classic_tabs": true,
-    "soda_folder_icons": true,
-    "tab_size": 4,
-    "theme": "Afterglow-orange.sublime-theme",
-    "translate_tabs_to_spaces": true,
-    "trim_trailing_white_space_on_save": true,
-    "use_tab_stops": true
+	"color_scheme": "Packages/Colorsublime - Themes/1337.tmTheme",
+	"dplus_bright_fonts": true,
+	"dplus_bright_minimap": true,
+	"dplus_bright_status_bar": true,
+	"dplus_fat_tabs": true,
+	"ensure_newline_at_eof_on_save": true,
+	"font_face": "Consolas",
+	"font_size": 13,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"TrailingSpaces",
+		"SublimeLinter",
+		"Vintage",
+		"DocBlockr"
+	],
+	"open_files_in_new_window": false,
+	"scroll_past_end": true,
+	"tab_size": 4,
+	"theme": "DefaultPlus Twilight.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"use_tab_stops": true
 }
+
