@@ -1,26 +1,23 @@
 {
-	"color_scheme": "Packages/Colorsublime - Themes/1337.tmTheme",
+	"color_scheme": "Packages/User/Darkside (Flake8Lint).tmTheme",
 	"dplus_bright_fonts": true,
 	"dplus_bright_minimap": true,
 	"dplus_bright_status_bar": true,
 	"dplus_fat_tabs": true,
 	"ensure_newline_at_eof_on_save": true,
-	"font_face": "Consolas",
-	"font_size": 13,
+	"font_face": "Hack",
+	"font_size": 14,
 	"highlight_line": true,
 	"ignored_packages":
 	[
-		"TrailingSpaces",
-		"SublimeLinter",
-		"Vintage",
-		"DocBlockr"
+		"Vintage"
 	],
 	"open_files_in_new_window": false,
 	"scroll_past_end": true,
-	"tab_size": 4,
+	"tab_size": 2,
 	"theme": "DefaultPlus Twilight.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
+	"typescript_plugin_tsc_version": "1.7.3",
 	"use_tab_stops": true
 }
-
