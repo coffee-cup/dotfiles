@@ -52,20 +52,32 @@ ZSH_THEME="amuse"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git, sublime, osx)
 
+source $ZSH/oh-my-zsh.sh
+source ~/.zshenv
+
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-# export MANPATH="/usr/local/man:$MANPATH"
+alias reload="source ~/.zshrc && source ~/.zshenv"
+#alias pip="pip3"
+#alias python="python3"
+alias eclimd="/Applications/Eclipse.app/Contents/Eclipse/eclimd"
 
-source $ZSH/oh-my-zsh.sh
-source $HOME/.zprofile
+# Emacs
+export -f emacs () { emacsclient -nq "$@" }
 
-alias zshconfig="subl ~/.zshrc"
-
-alias reload="source ~/.zshrc"
+## LLVM
+alias llc="/usr/local/Cellar/llvm-5.0/5.0.0/bin/llc-5.0"
+alias lli="/usr/local/Cellar/llvm-5.0/5.0.0/bin/lli-5.0"
+alias llvm-dis="/usr/local/Cellar/llvm-5.0/5.0.0/bin/llvm-dis-5.0"
+alias llvm-as="/usr/local/Cellar/llvm-5.0/5.0.0/bin/llvm-as-5.0"
+alias llvm-link="/usr/local/Cellar/llvm-5.0/5.0.0/bin/llvm-link-5.0"
+alias llvm-nm="/usr/local/Cellar/llvm-5.0/5.0.0/bin/llvm-nm-5.0"
+alias opt="/usr/local/Cellar/llvm-5.0/5.0.0/bin/opt-5.0"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
+
+export EDITOR='emacs'
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -95,3 +107,20 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Pure Prompt
 autoload -U promptinit; promptinit
 prompt pure
+
+echo ""
+echo "Hello $(whoami)."
+echo "【ツ】"
+
+# added by travis gem
+[ -f /Users/susie/.travis/travis.sh ] && source /Users/susie/.travis/travis.sh
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
+# cda
+export -f cda () { command cda "$@"; source ~/.cda; }; source ~/.cda;
+
+LC_CTYPE=en_US.UTF-8
+LC_ALL=en_US.UTF-8
